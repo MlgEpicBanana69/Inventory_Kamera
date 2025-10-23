@@ -79,7 +79,7 @@ namespace InventoryKamera
 
 		public bool IsValid()
 		{
-			return HasValidLevel() && HasValidRarity() && HasValidSlot() && HasValidSetName() && HasValidMainStat() && HasValidSubStats() && HasValidUnactivatedSubStats() && HasValidEquippedCharacter();
+			return HasValidLevel() && HasValidRarity() && HasValidSlot() && HasValidSetName() && HasValidMainStat() && HasValidSubStats() && HasValidEquippedCharacter();
 		}
 
 		public bool HasValidLevel()
@@ -119,14 +119,6 @@ namespace InventoryKamera
                     valid = false;
                 }
             });
-
-			return valid;
-		}
-
-		public bool HasValidUnactivatedSubStats()
-		{
-            bool valid = true;
-
             UnactivatedSubStats.ForEach(s =>
             {
                 if (!string.IsNullOrWhiteSpace(s.stat) &&
@@ -135,6 +127,19 @@ namespace InventoryKamera
                     valid = false;
                 }
             });
+
+			switch (Rarity)
+			{
+				case 5:
+					if (UnactivatedSubStats.Count + SubStats.Count < 4) valid = false;
+					break;
+				case 4:
+					if (UnactivatedSubStats.Count + SubStats.Count < 2) valid = false;
+					break;
+				default:
+					if (UnactivatedSubStats.Count + SubStats.Count == 0) valid = false;
+					break;
+			}
 
             return valid;
         }
