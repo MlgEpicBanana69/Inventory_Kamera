@@ -101,11 +101,11 @@
             this.EquipArtifactsCheckBox = new System.Windows.Forms.CheckBox();
             this.screenshotsToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.LogScreenshotsCheckBox = new System.Windows.Forms.CheckBox();
-            this.Minimu = new System.Windows.Forms.Label();
-            this.minimumSecondaryArtifactLevelControl = new System.Windows.Forms.NumericUpDown();
+            this.MinimumSecondaryArtifactLevelLabel = new System.Windows.Forms.Label();
+            this.MinimumSecondaryArtifactLevelControl = new System.Windows.Forms.NumericUpDown();
             this.wandererNameTextBox = new System.Windows.Forms.TextBox();
             this.travelerNameTextBox = new System.Windows.Forms.TextBox();
-            this.minimumPrimaryArtifactLevelControl = new System.Windows.Forms.NumericUpDown();
+            this.MinimumPrimaryArtifactLevelControl = new System.Windows.Forms.NumericUpDown();
             this.MinimumWeaponLevelControl = new System.Windows.Forms.NumericUpDown();
             this.ArtifactRarityControl = new System.Windows.Forms.NumericUpDown();
             this.WeaponRarityControl = new System.Windows.Forms.NumericUpDown();
@@ -125,8 +125,8 @@
             this.ScannerOutput_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GearPictureBox)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.minimumSecondaryArtifactLevelControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minimumPrimaryArtifactLevelControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinimumSecondaryArtifactLevelControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinimumPrimaryArtifactLevelControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinimumWeaponLevelControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArtifactRarityControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WeaponRarityControl)).BeginInit();
@@ -744,7 +744,7 @@
             this.updateExecutablesToolStripMenuItem.Name = "updateExecutablesToolStripMenuItem";
             this.updateExecutablesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.updateExecutablesToolStripMenuItem.Text = "Update Executables";
-            this.updateExecutablesToolStripMenuItem.Click += new System.EventHandler(this.updateExecutablesToolStripMenuItem_Click);
+            this.updateExecutablesToolStripMenuItem.Click += new System.EventHandler(this.UpdateExecutablesToolStripMenuItem_Click);
             // 
             // label2
             // 
@@ -867,28 +867,28 @@
         "enshots will be cleared when a new scan is started.\r\n");
             this.LogScreenshotsCheckBox.UseVisualStyleBackColor = true;
             // 
-            // Minimu
+            // MinimumSecondaryArtifactLevelLabel
             // 
-            this.Minimu.AutoSize = true;
-            this.Minimu.Location = new System.Drawing.Point(285, 75);
-            this.Minimu.Name = "Minimu";
-            this.Minimu.Size = new System.Drawing.Size(167, 13);
-            this.Minimu.TabIndex = 107;
-            this.Minimu.Text = "Minimum Secondary Artifact Level";
+            this.MinimumSecondaryArtifactLevelLabel.AutoSize = true;
+            this.MinimumSecondaryArtifactLevelLabel.Location = new System.Drawing.Point(285, 75);
+            this.MinimumSecondaryArtifactLevelLabel.Name = "MinimumSecondaryArtifactLevelLabel";
+            this.MinimumSecondaryArtifactLevelLabel.Size = new System.Drawing.Size(167, 13);
+            this.MinimumSecondaryArtifactLevelLabel.TabIndex = 107;
+            this.MinimumSecondaryArtifactLevelLabel.Text = "Minimum Secondary Artifact Level";
             // 
-            // minimumSecondaryArtifactLevelControl
+            // MinimumSecondaryArtifactLevelControl
             // 
-            this.minimumSecondaryArtifactLevelControl.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::InventoryKamera.Properties.Settings.Default, "MinimumSecondaryArtifactLevel", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.minimumSecondaryArtifactLevelControl.Location = new System.Drawing.Point(452, 73);
-            this.minimumSecondaryArtifactLevelControl.Maximum = new decimal(new int[] {
+            this.MinimumSecondaryArtifactLevelControl.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::InventoryKamera.Properties.Settings.Default, "MinimumSecondaryArtifactLevel", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.MinimumSecondaryArtifactLevelControl.Location = new System.Drawing.Point(452, 73);
+            this.MinimumSecondaryArtifactLevelControl.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.minimumSecondaryArtifactLevelControl.Name = "minimumSecondaryArtifactLevelControl";
-            this.minimumSecondaryArtifactLevelControl.Size = new System.Drawing.Size(48, 20);
-            this.minimumSecondaryArtifactLevelControl.TabIndex = 108;
-            this.minimumSecondaryArtifactLevelControl.Value = global::InventoryKamera.Properties.Settings.Default.MinimumSecondaryArtifactLevel;
+            this.MinimumSecondaryArtifactLevelControl.Name = "MinimumSecondaryArtifactLevelControl";
+            this.MinimumSecondaryArtifactLevelControl.Size = new System.Drawing.Size(48, 20);
+            this.MinimumSecondaryArtifactLevelControl.TabIndex = 108;
+            this.MinimumSecondaryArtifactLevelControl.Value = global::InventoryKamera.Properties.Settings.Default.MinimumSecondaryArtifactLevel;
             // 
             // wandererNameTextBox
             // 
@@ -914,20 +914,20 @@
             this.travelerNameTextBox.MouseHover += new System.EventHandler(this.DisplayCustomNameTooltip);
             this.travelerNameTextBox.ParentChanged += new System.EventHandler(this.ValidateCustomName);
             // 
-            // minimumPrimaryArtifactLevelControl
+            // MinimumPrimaryArtifactLevelControl
             // 
-            this.minimumPrimaryArtifactLevelControl.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::InventoryKamera.Properties.Settings.Default, "MinimumPrimaryArtifactLevel", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.minimumPrimaryArtifactLevelControl.Location = new System.Drawing.Point(452, 50);
-            this.minimumPrimaryArtifactLevelControl.Maximum = new decimal(new int[] {
+            this.MinimumPrimaryArtifactLevelControl.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::InventoryKamera.Properties.Settings.Default, "MinimumPrimaryArtifactLevel", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.MinimumPrimaryArtifactLevelControl.Location = new System.Drawing.Point(452, 50);
+            this.MinimumPrimaryArtifactLevelControl.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.minimumPrimaryArtifactLevelControl.Name = "minimumPrimaryArtifactLevelControl";
-            this.minimumPrimaryArtifactLevelControl.Size = new System.Drawing.Size(48, 20);
-            this.minimumPrimaryArtifactLevelControl.TabIndex = 95;
-            this.minimumPrimaryArtifactLevelControl.Value = global::InventoryKamera.Properties.Settings.Default.MinimumPrimaryArtifactLevel;
-            this.minimumPrimaryArtifactLevelControl.ValueChanged += new System.EventHandler(this.minimumPrimaryArtifactLevelControl_ValueChanged);
+            this.MinimumPrimaryArtifactLevelControl.Name = "MinimumPrimaryArtifactLevelControl";
+            this.MinimumPrimaryArtifactLevelControl.Size = new System.Drawing.Size(48, 20);
+            this.MinimumPrimaryArtifactLevelControl.TabIndex = 95;
+            this.MinimumPrimaryArtifactLevelControl.Value = global::InventoryKamera.Properties.Settings.Default.MinimumPrimaryArtifactLevel;
+            this.MinimumPrimaryArtifactLevelControl.ValueChanged += new System.EventHandler(this.MinimumPrimaryArtifactLevelControl_ValueChanged);
             // 
             // MinimumWeaponLevelControl
             // 
@@ -1090,8 +1090,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(595, 519);
-            this.Controls.Add(this.minimumSecondaryArtifactLevelControl);
-            this.Controls.Add(this.Minimu);
+            this.Controls.Add(this.MinimumSecondaryArtifactLevelControl);
+            this.Controls.Add(this.MinimumSecondaryArtifactLevelLabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.wandererNameTextBox);
             this.Controls.Add(this.label1);
@@ -1101,7 +1101,7 @@
             this.Controls.Add(this.EquipArtifactsCheckBox);
             this.Controls.Add(this.ManualExportButton);
             this.Controls.Add(this.LogScreenshotsCheckBox);
-            this.Controls.Add(this.minimumPrimaryArtifactLevelControl);
+            this.Controls.Add(this.MinimumPrimaryArtifactLevelControl);
             this.Controls.Add(this.MinimumWeaponLevelControl);
             this.Controls.Add(this.MinimumPrimaryArtifactLevelLabel);
             this.Controls.Add(this.MinimumWeaponLevelLabel);
@@ -1165,8 +1165,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.GearPictureBox)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.minimumSecondaryArtifactLevelControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minimumPrimaryArtifactLevelControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinimumSecondaryArtifactLevelControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinimumPrimaryArtifactLevelControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinimumWeaponLevelControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArtifactRarityControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WeaponRarityControl)).EndInit();
@@ -1246,7 +1246,7 @@
         private System.Windows.Forms.Label MinimumWeaponLevelLabel;
         private System.Windows.Forms.Label MinimumPrimaryArtifactLevelLabel;
         private System.Windows.Forms.NumericUpDown MinimumWeaponLevelControl;
-        private System.Windows.Forms.NumericUpDown minimumPrimaryArtifactLevelControl;
+        private System.Windows.Forms.NumericUpDown MinimumPrimaryArtifactLevelControl;
         private System.Windows.Forms.CheckBox LogScreenshotsCheckBox;
         private System.Windows.Forms.Button ManualExportButton;
         private System.Windows.Forms.CheckBox EquipArtifactsCheckBox;
@@ -1262,8 +1262,8 @@
         private System.Windows.Forms.ToolStripMenuItem updateExecutablesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem characterSlot1KeyToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox slot1StripTextBox;
-        private System.Windows.Forms.Label Minimu;
-        private System.Windows.Forms.NumericUpDown minimumSecondaryArtifactLevelControl;
+        private System.Windows.Forms.Label MinimumSecondaryArtifactLevelLabel;
+        private System.Windows.Forms.NumericUpDown MinimumSecondaryArtifactLevelControl;
     }
 }
 

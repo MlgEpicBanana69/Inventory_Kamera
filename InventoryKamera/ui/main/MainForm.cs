@@ -143,7 +143,7 @@ namespace InventoryKamera
                 OutputPath_TextBox.Text = Directory.GetCurrentDirectory() + @"\GenshinData";
             }
 
-            minimumSecondaryArtifactLevelControl.Enabled = Properties.Settings.Default.MinimumArtifactRarity < 5 && Properties.Settings.Default.MinimumPrimaryArtifactLevel == 0;
+            MinimumSecondaryArtifactLevelControl.Enabled = Properties.Settings.Default.MinimumArtifactRarity < 5 && Properties.Settings.Default.MinimumPrimaryArtifactLevel == 0;
         }
 
         private void UpdateKeyTextBoxes()
@@ -629,19 +629,19 @@ namespace InventoryKamera
             Process.Start($@"logging");
         }
 
-        private void updateExecutablesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UpdateExecutablesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ExecutablesForm().Show();
         }
 
         private void ArtifactRarityControl_ValueChanged(object sender, EventArgs e)
         {
-            minimumSecondaryArtifactLevelControl.Enabled = ArtifactRarityControl.Value < 5 && Properties.Settings.Default.MinimumPrimaryArtifactLevel == 0;
+            MinimumSecondaryArtifactLevelControl.Enabled = ArtifactRarityControl.Value < 5 && Properties.Settings.Default.MinimumPrimaryArtifactLevel == 0;
         }
 
-        private void minimumPrimaryArtifactLevelControl_ValueChanged(object sender, EventArgs e)
+        private void MinimumPrimaryArtifactLevelControl_ValueChanged(object sender, EventArgs e)
         {
-            minimumSecondaryArtifactLevelControl.Enabled = Properties.Settings.Default.MinimumArtifactRarity < 5 && minimumPrimaryArtifactLevelControl.Value == 0;
+            MinimumSecondaryArtifactLevelControl.Enabled = Properties.Settings.Default.MinimumArtifactRarity < 5 && MinimumPrimaryArtifactLevelControl.Value == 0;
         }
     }
 }
