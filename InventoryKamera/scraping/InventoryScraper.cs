@@ -521,12 +521,12 @@ namespace InventoryKamera
         /// </summary>
         /// <param name="card">Bitmap of the item card</param>
         /// <returns>A bitmap copy of the item card's lock status icon</returns>
-        internal static Bitmap GetLockedBitmap(Bitmap card)
+        internal static Bitmap GetLockedBitmap(Bitmap card, double y_offset = 0.0)
         {
             return GenshinProcesor.CopyBitmap(card,
                 new Rectangle(
                     x: (int)(card.Width * 0.75),
-                    y: (int)(card.Height * (Navigation.IsNormal ? 0.353 : 0.309)),
+                    y: (int)(card.Height * (Navigation.IsNormal ? 0.353 : 0.309) + y_offset),
                     width: (int)(card.Width * 0.0955),
                     height: (int)(card.Height * (Navigation.IsNormal ? 0.055 : 0.0495))));
         }

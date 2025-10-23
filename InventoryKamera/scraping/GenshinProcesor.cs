@@ -698,7 +698,7 @@ namespace InventoryKamera
 			diff[0] = Math.Abs(a.R - b.R);
 			diff[1] = Math.Abs(a.G - b.G);
 			diff[2] = Math.Abs(a.B - b.B);
-
+			
 			return diff[0] < 10 && diff[1] < 10 && diff[2] < 10;
 		}
 

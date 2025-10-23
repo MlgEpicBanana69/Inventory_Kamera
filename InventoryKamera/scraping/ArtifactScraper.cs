@@ -167,35 +167,52 @@ namespace InventoryKamera
         public async void QueueScan(int id)
 		{
 			var card = GetItemCard();
-            Bitmap name, gearSlot, mainStat, subStats, level, equipped, locked;
-
+            Bitmap name, gearSlot, mainStat, level, subStats, equipped, locked, astralMark, elixirCrafted;
+            
 			name = GetItemNameBitmap(card);
-			locked = GetLockedBitmap(card);
+			mainStat = GetMainStatBitmap(card);
 			equipped = GetEquippedBitmap(card);
 			gearSlot = GetGearSlotBitmap(card);
-			mainStat = GetMainStatBitmap(card);
-			level = GetLevelBitmap(card);
-			subStats = GetSubstatsBitmap(card);
 
+			// If an artifact is elixir crafted, the bitmaps below would be scanned incorrectly
+			elixirCrafted = GetElixirCraftedBitmap(card);
+			// Do the elixir crafted scan now
+			Color elixirCraftedColor = Color.FromArgb(220, 192, 255);
+			Color elixirCraftedStatus = elixirCrafted.GetPixel(5, 5);
+			bool isElixirCrafted = GenshinProcesor.CompareColors(elixirCraftedColor, elixirCraftedStatus);
 
+			// Get the offset which the elixir crafted banner messes with
+			double elixirCraftedYOffset = isElixirCrafted ? elixirCrafted.Height : 0.0;
+            locked = GetLockedBitmap(card, elixirCraftedYOffset);
+			astralMark = GetAstralMarkBitmap(card, elixirCraftedYOffset);
+			level = GetLevelBitmap(card, elixirCraftedYOffset);
+			subStats = GetSubstatsBitmap(card, elixirCraftedYOffset);
+
+			//Navigation.DisplayBitmap(card);
 			//Navigation.DisplayBitmap(name);
-			//Navigation.DisplayBitmap(locked);
-			//Navigation.DisplayBitmap(equipped);
 			//Navigation.DisplayBitmap(mainStat);
-			//Navigation.DisplayBitmap(subStats);
+			//Navigation.DisplayBitmap(equipped);
+			//Navigation.DisplayBitmap(gearSlot);
+
+			//Navigation.DisplayBitmap(elixirCrafted);
+			//Navigation.DisplayBitmap(locked);
+			//Navigation.DisplayBitmap(astralMark);
 			//Navigation.DisplayBitmap(level);
+			//Navigation.DisplayBitmap(subStats);
 
 			// Separate to all pieces of artifact and add to pics
 			List<Bitmap> artifactImages = new List<Bitmap>
 			{
-				name, //0
-				gearSlot,
-				mainStat,
-				level,
-				subStats,
+				name,     //0
+				gearSlot, //1
+				mainStat, //2
+				level,    //3
+				subStats, //4
 				equipped, //5
-				locked, 
-				card
+				locked,   //6
+				elixirCrafted, //7
+				astralMark, //9
+				card // last
 			};
 
             int currRarity = GetRarity(name);
@@ -220,13 +237,13 @@ namespace InventoryKamera
             InventoryKamera.workerQueue.Enqueue(new OCRImageCollection(artifactImages, "artifact", id));
         }
 
-        private Bitmap GetSubstatsBitmap(Bitmap card)
+        private Bitmap GetSubstatsBitmap(Bitmap card, double y_offset = 0.0)
         {
             return GenshinProcesor.CopyBitmap(card,new Rectangle(
-				x:(int)(card.Width * 0.0911),
-				y:(int)(card.Height * (Navigation.IsNormal ? 0.4216 : 0.3682)),
-				width:(int)(card.Width * 0.8097),
-				height:(int)(card.Height * (Navigation.IsNormal ? 0.1841 : 0.1573))));
+				x:(int)(card.Width * 0.0511),
+				y:(int)(card.Height * (Navigation.IsNormal ? 0.4216 : 0.3682) + y_offset),
+				width:(int)(card.Width * 0.8597),
+				height:(int)(card.Height * (Navigation.IsNormal ? 0.22 : 0.20809))));
         }
 
         private Bitmap GetMainStatBitmap(Bitmap card)
@@ -238,13 +255,33 @@ namespace InventoryKamera
 				height: (int)(card.Height * (Navigation.IsNormal ? 0.0416 : 0.0416))));
         }
 
-        private Bitmap GetLevelBitmap(Bitmap card)
+        private Bitmap GetLevelBitmap(Bitmap card, double y_offset = 0.0)
         {
             return GenshinProcesor.CopyBitmap(card, new Rectangle(
                 x: (int)(card.Width * 0.0506),
-                y: (int)(card.Height * (Navigation.IsNormal ? 0.3634 : 0.3197)),
+                y: (int)(card.Height * (Navigation.IsNormal ? 0.3634 : 0.3197) + y_offset),
                 width: (int)(card.Width * 0.1417),
                 height: (int)(card.Height * (Navigation.IsNormal ? 0.0416 : 0.0347))));
+        }
+
+		private Bitmap GetAstralMarkBitmap(Bitmap card, double y_offset = 0.0)
+		{
+            return GenshinProcesor.CopyBitmap(card,
+                new Rectangle(
+                    x: (int)(card.Width * 0.869),
+                    y: (int)(card.Height * (Navigation.IsNormal ? 0.353 : 0.309) + y_offset),
+                    width: (int)(card.Width * 0.0955),
+                    height: (int)(card.Height * (Navigation.IsNormal ? 0.055 : 0.0495))));
+        }
+
+		private Bitmap GetElixirCraftedBitmap(Bitmap card)
+		{
+			return GenshinProcesor.CopyBitmap(card,
+                new Rectangle(
+                    x: (int)(card.Width * 0.013944),
+                    y: (int)(card.Height * (Navigation.IsNormal ? 0.33842 : 0.35895)),
+                    width: (int)(card.Width * 0.98),
+                    height: (int)(card.Height * (Navigation.IsNormal ? 0.05 : 0.045))));
         }
 
         private Bitmap GetGearSlotBitmap(Bitmap card)
@@ -271,10 +308,13 @@ namespace InventoryKamera
 			bool elixirCrafted = false;
 			List<SubStat> unactivatedSubStats = new List<SubStat>();
 
-			if (bm.Count >= 6)
+			if (bm.Count >= 9)
 			{
 				rarity = 0;
-				int a_name = 0; int a_gearSlot = 1; int a_mainStat = 2; int a_level = 3; int a_subStats = 4; int a_equippedCharacter = 5; int a_lock = 6; 
+				// Stuff we can scan pre crafted elixir
+				int a_name = 0; int a_gearSlot = 1; int a_mainStat = 2; int a_level = 3; int a_subStats = 4; int a_equippedCharacter = 5; int a_lock = 6;
+				int a_elixirCrafted = 7; int a_astralMark = 8;
+				
 				// Get Rarity
 				rarity = GetRarity(bm[a_name]);
 
@@ -283,18 +323,36 @@ namespace InventoryKamera
 				Color equippedStatus = bm[a_equippedCharacter].GetPixel(5, 5);
 				bool b_equipped = GenshinProcesor.CompareColors(equippedColor, equippedStatus);
 
-				// Check for lock color
-				Color lockedColor = Color.FromArgb(255, 70, 80, 100); // Dark area around red lock
-				Color lockStatus = bm[a_lock].GetPixel(10, 10);
-				_lock = GenshinProcesor.CompareColors(lockedColor, lockStatus);
 
-				// Improved Scanning using multi threading
-				List<Task> tasks = new List<Task>();
+
+                // Check for elixir crafted color
+                Color elixirCraftedColor = Color.FromArgb(255, 220, 192, 255);
+                Color elixirCraftedStatus = bm[a_elixirCrafted].GetPixel(5, 5);
+                elixirCrafted = GenshinProcesor.CompareColors(elixirCraftedColor, elixirCraftedStatus);
+
+				// Check for Astral Mark color
+				Color astralMarkColor = Color.FromArgb(255, 255, 204, 50);
+				Color astralMarkStatus = bm[a_astralMark].GetPixel(20, 30);
+				astralMark = GenshinProcesor.CompareColors(astralMarkColor, astralMarkStatus);
+
+				// Astral Marked artifacts are forcfully locked in-game
+				if (!astralMark)
+				{
+					// Check for lock color
+					Color lockedColor = Color.FromArgb(255, 255, 138, 117); // Red color of the lock
+					Color lockStatus = bm[a_lock].GetPixel(14, 33);
+					_lock = GenshinProcesor.CompareColors(lockedColor, lockStatus);
+				}
+				else
+					_lock = true;
+
+					// Improved Scanning using multi threading
+					List<Task> tasks = new List<Task>();
 
 				var taskGear  = Task.Run(() => gearSlot = ScanArtifactGearSlot(bm[a_gearSlot]));
 				var taskMain  = taskGear.ContinueWith( (antecedent) => mainStat = ScanArtifactMainStat(bm[a_mainStat], antecedent.Result));
 				var taskLevel = Task.Run(() => level = ScanArtifactLevel(bm[a_level]));
-				var taskSubs  = Task.Run(() => subStats = ScanArtifactSubStats(bm[a_subStats]));
+				var taskSubs  = Task.Run(() => (subStats, unactivatedSubStats) = ScanArtifactSubStats(bm[a_subStats]));
 				var taskEquip = Task.Run(() => equippedCharacter = ScanArtifactEquippedCharacter(bm[a_equippedCharacter]));
 				var taskName = Task.Run(() => setName = ScanArtifactSet(bm[a_name]));
 
@@ -309,8 +367,10 @@ namespace InventoryKamera
 				}
 
 				await Task.WhenAll(tasks.ToArray());
+
 			}
-			return new Artifact(setName, rarity, level, gearSlot, mainStat, subStats, unactivatedSubStats, equippedCharacter, id, _lock, astralMark, elixirCrafted);
+
+            return new Artifact(setName, rarity, level, gearSlot, mainStat, subStats, unactivatedSubStats, equippedCharacter, id, _lock, astralMark, elixirCrafted);
 		}
 
 		private static int GetRarity(Bitmap bm)
@@ -343,7 +403,7 @@ namespace InventoryKamera
 			return !string.IsNullOrWhiteSpace(material) && GenshinProcesor.enhancementMaterials.Contains(material.ToLower());
 		}
 
-		private static string ScanEnhancementMaterialName(Bitmap bm)
+        private static string ScanEnhancementMaterialName(Bitmap bm)
 		{
 			GenshinProcesor.SetGamma(0.2, 0.2, 0.2, ref bm);
 			Bitmap n = GenshinProcesor.ConvertToGrayscale(bm);
@@ -430,11 +490,13 @@ namespace InventoryKamera
 			return int.TryParse(text, out int level) ? level : -1;
 		}
 
-		private static List<SubStat> ScanArtifactSubStats(Bitmap artifactImage)
+		private static (List<SubStat>, List<SubStat>) ScanArtifactSubStats(Bitmap artifactImage)
         {
             Bitmap bm = (Bitmap)artifactImage.Clone();
 			List<string> lines = new List<string>();
 			List<SubStat> substats = new List<SubStat>();
+			List<SubStat> unactivatedSubstats = new List<SubStat>();
+
 			string text;
             GenshinProcesor.SetBrightness(-30, ref bm);
             GenshinProcesor.SetContrast(85, ref bm);
@@ -442,21 +504,29 @@ namespace InventoryKamera
 			{
 				text = GenshinProcesor.AnalyzeText(n, Tesseract.PageSegMode.Auto).ToLower();
 			}
+            bm.Dispose();
 
             lines = new List<string>(text.Split('\n'));
             lines.RemoveAll(line => string.IsNullOrWhiteSpace(line));
-
-            var index = lines.FindIndex(line => line.Contains(":") || line.Contains("piece") || line.Contains("set") || line.Contains("2-"));
+            var index = lines.FindIndex(line => line.EndsWith(":") || line.Contains("piece") || line.Contains("set") || line.Contains("2-"));
             if (index >= 0)
             {
                 lines.RemoveRange(index, lines.Count - index);
             }
+			
+			// More than 4 lines happen when the (unactivated) moves a line down due to long substat name
+			if (lines.Count > 4)
+			{
+				lines[lines.Count-2] += $" {lines[lines.Count - 1]}";
+				lines.RemoveAt(lines.Count-1);
+			}
 
-            bm.Dispose();
             for (int i = 0; i < lines.Count; i++)
             {
-                var line = Regex.Replace(lines[i], @"(?:^[^a-zA-Z]*)", string.Empty).Replace(" ", string.Empty);
-
+				string line = Regex.Replace(lines[i], @" \(unactivated\)*", string.Empty);
+				bool isUnactivated = line != lines[i]; // Meaning the replace had an effect
+				
+                line = Regex.Replace(line, @"(?:^[^a-zA-Z]*)", string.Empty).Replace(" ", string.Empty);
 				if (line.Any(char.IsDigit))
 				{
 					Logger.Debug("Parsing artifact substat: {0}", line);
@@ -491,10 +561,15 @@ namespace InventoryKamera
 						Logger.Debug("Failed to parse stat from: {0}", line);
 					}
 
-					substats.Insert(i, substat);
+					if (!isUnactivated)
+						substats.Add(substat);
+					else
+						unactivatedSubstats.Add(substat);
 				}
             }
-            return substats;
+			if (substats.Count + unactivatedSubstats.Count < 4)
+				throw new NotImplementedException();
+            return (substats, unactivatedSubstats);
         }
 
         private static string ScanArtifactEquippedCharacter(Bitmap bm)

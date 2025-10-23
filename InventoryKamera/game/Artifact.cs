@@ -119,14 +119,14 @@ namespace InventoryKamera
                     valid = false;
                 }
             });
-            UnactivatedSubStats.ForEach(s =>
-            {
-                if (!string.IsNullOrWhiteSpace(s.stat) &&
-                    (!GenshinProcesor.IsValidStat(s.stat) || s.value == (decimal)(-1.0)))
-                {
-                    valid = false;
-                }
-            });
+			UnactivatedSubStats.ForEach(s =>
+			{
+				if (!string.IsNullOrWhiteSpace(s.stat) &&
+				(!GenshinProcesor.IsValidStat(s.stat) || s.value == (decimal)(-1.0)))
+				{
+					valid = false;
+				}
+			});
 
 			switch (Rarity)
 			{
@@ -141,8 +141,8 @@ namespace InventoryKamera
 					break;
 			}
 
-            return valid;
-        }
+			return valid;
+		}
 
 		public bool HasValidEquippedCharacter()
 		{
