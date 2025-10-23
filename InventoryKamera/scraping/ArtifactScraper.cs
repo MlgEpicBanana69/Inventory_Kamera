@@ -259,14 +259,19 @@ namespace InventoryKamera
         public static async Task<Artifact> CatalogueFromBitmapsAsync(List<Bitmap> bm, int id)
 		{
 			// Init Variables
+			int rarity = 0;
 			string gearSlot = null;
 			string mainStat = null;
+			int level = 0;
+			List<SubStat> subStats = new List<SubStat>();
 			string setName = null;
 			string equippedCharacter = null;
-			List<SubStat> subStats = new List<SubStat>();
-			int rarity = 0;
-			int level = 0;
 			bool _lock = false;
+			int totalRolls = 0;
+			bool astralMark = false;
+			bool elixirCrafted = false;
+			List<SubStat> unactivatedSubStats = new List<SubStat>();
+
 
 			if (bm.Count >= 6)
 			{
@@ -306,7 +311,7 @@ namespace InventoryKamera
 
 				await Task.WhenAll(tasks.ToArray());
 			}
-			return new Artifact(setName, rarity, level, gearSlot, mainStat, subStats, equippedCharacter, id, _lock);
+			return new Artifact(setName, rarity, level, gearSlot, mainStat, subStats, unactivatedSubStats, equippedCharacter, id, _lock, totalRolls, astralMark, elixirCrafted);
 		}
 
 		private static int GetRarity(Bitmap bm)
