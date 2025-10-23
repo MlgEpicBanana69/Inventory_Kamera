@@ -47,7 +47,7 @@
     <Setting Name="MinimumWeaponLevel" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="MinimumArtifactLevel" Type="System.Decimal" Scope="User">
+    <Setting Name="MinimumPrimaryArtifactLevel" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="LogScreenshots" Type="System.Boolean" Scope="User">
@@ -74,6 +74,9 @@
     </Setting>
     <Setting Name="Slot1Key" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="MinimumSecondaryArtifactLevel" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

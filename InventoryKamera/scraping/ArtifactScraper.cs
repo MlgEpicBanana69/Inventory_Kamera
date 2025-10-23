@@ -1,6 +1,7 @@
 ﻿using Accord.Imaging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace InventoryKamera
 		public ArtifactScraper() 
 		{
 			inventoryPage = InventoryPage.Artifacts;
-            SortByLevel = Properties.Settings.Default.MinimumArtifactLevel > 0;
+            SortByLevel = Properties.Settings.Default.MinimumPrimaryArtifactLevel > 0;
         }
 
         public void ScanArtifacts(int count = 0)
@@ -198,11 +199,20 @@ namespace InventoryKamera
 				card
 			};
 
-            bool belowRarity = GetRarity(name) < Properties.Settings.Default.MinimumArtifactRarity;
-            bool belowLevel = ScanArtifactLevel(level) < Properties.Settings.Default.MinimumArtifactLevel;
-            StopScanning = (SortByLevel && belowLevel) || (!SortByLevel && belowRarity);
+            int currRarity = GetRarity(name);
+            int currLevel = ScanArtifactLevel(level);
+            bool belowRarity = currRarity < Properties.Settings.Default.MinimumArtifactRarity;
+            if (SortByLevel)
+            {
+                StopScanning = currLevel < Properties.Settings.Default.MinimumPrimaryArtifactLevel;
+            }
+            // If we scan across multiple rarities AND we are on the last rarity THEN filter using the secondary minimum
+            else if (currRarity == Properties.Settings.Default.MinimumArtifactRarity && Properties.Settings.Default.MinimumArtifactRarity < 5)
+            {
+                StopScanning = currLevel < Properties.Settings.Default.MinimumSecondaryArtifactLevel;
+            }
 
-			if (StopScanning || belowRarity || belowLevel)
+            if (StopScanning || belowRarity || currLevel < 0) // what??
             {
 				artifactImages.ForEach(i => i.Dispose());
 				return;

@@ -142,7 +142,8 @@ namespace InventoryKamera
             {
                 OutputPath_TextBox.Text = Directory.GetCurrentDirectory() + @"\GenshinData";
             }
-            
+
+            minimumSecondaryArtifactLevelControl.Enabled = Properties.Settings.Default.MinimumArtifactRarity < 5 && Properties.Settings.Default.MinimumPrimaryArtifactLevel == 0;
         }
 
         private void UpdateKeyTextBoxes()
@@ -233,7 +234,7 @@ namespace InventoryKamera
                     $"\tMin Weapon Level:\t\t {settings.MinimumWeaponLevel}\n" +
                     $"\tEquip Weapons:\t\t\t {settings.EquipWeapons}\n" +
                     $"\tMin Artifact Rarity:\t {settings.MinimumArtifactRarity}\n" +
-                    $"\tMin Artifact Level:\t\t {settings.MinimumArtifactLevel}\n" +
+                    $"\tMin Artifact Level:\t\t {settings.MinimumPrimaryArtifactLevel}\n" +
                     $"\tEquip Artifacts:\t\t {settings.EquipArtifacts}\n" +
                     $"\tDelay:\t\t\t\t\t {settings.ScannerDelay}";
 
@@ -631,6 +632,16 @@ namespace InventoryKamera
         private void updateExecutablesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ExecutablesForm().Show();
+        }
+
+        private void ArtifactRarityControl_ValueChanged(object sender, EventArgs e)
+        {
+            minimumSecondaryArtifactLevelControl.Enabled = ArtifactRarityControl.Value < 5 && Properties.Settings.Default.MinimumPrimaryArtifactLevel == 0;
+        }
+
+        private void minimumPrimaryArtifactLevelControl_ValueChanged(object sender, EventArgs e)
+        {
+            minimumSecondaryArtifactLevelControl.Enabled = Properties.Settings.Default.MinimumArtifactRarity < 5 && minimumPrimaryArtifactLevelControl.Value == 0;
         }
     }
 }

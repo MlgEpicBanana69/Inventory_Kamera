@@ -12,7 +12,7 @@ namespace InventoryKamera.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.14.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -206,12 +206,12 @@ namespace InventoryKamera.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public decimal MinimumArtifactLevel {
+        public decimal MinimumPrimaryArtifactLevel {
             get {
-                return ((decimal)(this["MinimumArtifactLevel"]));
+                return ((decimal)(this["MinimumPrimaryArtifactLevel"]));
             }
             set {
-                this["MinimumArtifactLevel"] = value;
+                this["MinimumPrimaryArtifactLevel"] = value;
             }
         }
         
@@ -298,6 +298,18 @@ namespace InventoryKamera.Properties {
             }
             set {
                 this["Slot1Key"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal MinimumSecondaryArtifactLevel {
+            get {
+                return ((decimal)(this["MinimumSecondaryArtifactLevel"]));
+            }
+            set {
+                this["MinimumSecondaryArtifactLevel"] = value;
             }
         }
     }

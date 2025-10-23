@@ -90,7 +90,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.MinimumWeaponLevelLabel = new System.Windows.Forms.Label();
-            this.MinimumArtifactLevelLabel = new System.Windows.Forms.Label();
+            this.MinimumPrimaryArtifactLevelLabel = new System.Windows.Forms.Label();
             this.ManualExportButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -101,9 +101,11 @@
             this.EquipArtifactsCheckBox = new System.Windows.Forms.CheckBox();
             this.screenshotsToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.LogScreenshotsCheckBox = new System.Windows.Forms.CheckBox();
+            this.Minimu = new System.Windows.Forms.Label();
+            this.minimumSecondaryArtifactLevelControl = new System.Windows.Forms.NumericUpDown();
             this.wandererNameTextBox = new System.Windows.Forms.TextBox();
             this.travelerNameTextBox = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.minimumPrimaryArtifactLevelControl = new System.Windows.Forms.NumericUpDown();
             this.MinimumWeaponLevelControl = new System.Windows.Forms.NumericUpDown();
             this.ArtifactRarityControl = new System.Windows.Forms.NumericUpDown();
             this.WeaponRarityControl = new System.Windows.Forms.NumericUpDown();
@@ -123,7 +125,8 @@
             this.ScannerOutput_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GearPictureBox)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimumSecondaryArtifactLevelControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimumPrimaryArtifactLevelControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinimumWeaponLevelControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArtifactRarityControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WeaponRarityControl)).BeginInit();
@@ -405,7 +408,7 @@
             // 
             this.Github_Label.AutoSize = true;
             this.Github_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Github_Label.Location = new System.Drawing.Point(500, 26);
+            this.Github_Label.Location = new System.Drawing.Point(505, 26);
             this.Github_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Github_Label.Name = "Github_Label";
             this.Github_Label.Size = new System.Drawing.Size(88, 13);
@@ -470,7 +473,7 @@
             // 
             this.Releases_Label.AutoSize = true;
             this.Releases_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Releases_Label.Location = new System.Drawing.Point(500, 45);
+            this.Releases_Label.Location = new System.Drawing.Point(505, 45);
             this.Releases_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Releases_Label.Name = "Releases_Label";
             this.Releases_Label.Size = new System.Drawing.Size(85, 13);
@@ -481,7 +484,7 @@
             // 
             // Navigation_Image
             // 
-            this.Navigation_Image.Location = new System.Drawing.Point(502, 83);
+            this.Navigation_Image.Location = new System.Drawing.Point(507, 83);
             this.Navigation_Image.Margin = new System.Windows.Forms.Padding(2);
             this.Navigation_Image.Name = "Navigation_Image";
             this.Navigation_Image.Size = new System.Drawing.Size(80, 40);
@@ -492,7 +495,7 @@
             // Navigation_Label
             // 
             this.Navigation_Label.AutoSize = true;
-            this.Navigation_Label.Location = new System.Drawing.Point(499, 67);
+            this.Navigation_Label.Location = new System.Drawing.Point(504, 67);
             this.Navigation_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Navigation_Label.Name = "Navigation_Label";
             this.Navigation_Label.Size = new System.Drawing.Size(61, 13);
@@ -667,7 +670,7 @@
             this.inventoryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.inventoryToolStripTextBox});
             this.inventoryToolStripMenuItem.Name = "inventoryToolStripMenuItem";
-            this.inventoryToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.inventoryToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.inventoryToolStripMenuItem.Text = "Inventory Key";
             // 
             // inventoryToolStripTextBox
@@ -687,7 +690,7 @@
             this.characterScreenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.characterToolStripTextBox});
             this.characterScreenToolStripMenuItem.Name = "characterScreenToolStripMenuItem";
-            this.characterScreenToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.characterScreenToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.characterScreenToolStripMenuItem.Text = "Character Screen Key";
             // 
             // characterToolStripTextBox
@@ -707,7 +710,7 @@
             this.characterSlot1KeyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.slot1StripTextBox});
             this.characterSlot1KeyToolStripMenuItem.Name = "characterSlot1KeyToolStripMenuItem";
-            this.characterSlot1KeyToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.characterSlot1KeyToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.characterSlot1KeyToolStripMenuItem.Text = "Character Slot 1 Key";
             // 
             // slot1StripTextBox
@@ -725,21 +728,21 @@
             // DatabaseUpdateMenuItem
             // 
             this.DatabaseUpdateMenuItem.Name = "DatabaseUpdateMenuItem";
-            this.DatabaseUpdateMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.DatabaseUpdateMenuItem.Size = new System.Drawing.Size(191, 22);
             this.DatabaseUpdateMenuItem.Text = "Update Lookup Tables";
             this.DatabaseUpdateMenuItem.Click += new System.EventHandler(this.DatabaseUpdateMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(191, 22);
             this.toolStripMenuItem1.Text = "Open Export Folder";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.ExportFolderMenuItem_Click);
             // 
             // updateExecutablesToolStripMenuItem
             // 
             this.updateExecutablesToolStripMenuItem.Name = "updateExecutablesToolStripMenuItem";
-            this.updateExecutablesToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.updateExecutablesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.updateExecutablesToolStripMenuItem.Text = "Update Executables";
             this.updateExecutablesToolStripMenuItem.Click += new System.EventHandler(this.updateExecutablesToolStripMenuItem_Click);
             // 
@@ -770,14 +773,14 @@
             this.MinimumWeaponLevelLabel.TabIndex = 92;
             this.MinimumWeaponLevelLabel.Text = "Minimum Weapon Level";
             // 
-            // MinimumArtifactLevelLabel
+            // MinimumPrimaryArtifactLevelLabel
             // 
-            this.MinimumArtifactLevelLabel.AutoSize = true;
-            this.MinimumArtifactLevelLabel.Location = new System.Drawing.Point(286, 67);
-            this.MinimumArtifactLevelLabel.Name = "MinimumArtifactLevelLabel";
-            this.MinimumArtifactLevelLabel.Size = new System.Drawing.Size(113, 13);
-            this.MinimumArtifactLevelLabel.TabIndex = 93;
-            this.MinimumArtifactLevelLabel.Text = "Minimum Artifact Level";
+            this.MinimumPrimaryArtifactLevelLabel.AutoSize = true;
+            this.MinimumPrimaryArtifactLevelLabel.Location = new System.Drawing.Point(285, 54);
+            this.MinimumPrimaryArtifactLevelLabel.Name = "MinimumPrimaryArtifactLevelLabel";
+            this.MinimumPrimaryArtifactLevelLabel.Size = new System.Drawing.Size(150, 13);
+            this.MinimumPrimaryArtifactLevelLabel.TabIndex = 93;
+            this.MinimumPrimaryArtifactLevelLabel.Text = "Minimum Primary Artifact Level";
             // 
             // ManualExportButton
             // 
@@ -803,7 +806,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(238, 114);
+            this.label1.Location = new System.Drawing.Point(238, 119);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 102;
@@ -812,7 +815,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(230, 148);
+            this.label4.Location = new System.Drawing.Point(230, 153);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 13);
             this.label4.TabIndex = 106;
@@ -824,7 +827,7 @@
             this.EquipWeaponsCheckBox.Checked = global::InventoryKamera.Properties.Settings.Default.EquipWeapons;
             this.EquipWeaponsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.EquipWeaponsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::InventoryKamera.Properties.Settings.Default, "EquipWeapons", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.EquipWeaponsCheckBox.Location = new System.Drawing.Point(129, 88);
+            this.EquipWeaponsCheckBox.Location = new System.Drawing.Point(110, 93);
             this.EquipWeaponsCheckBox.Name = "EquipWeaponsCheckBox";
             this.EquipWeaponsCheckBox.Size = new System.Drawing.Size(102, 17);
             this.EquipWeaponsCheckBox.TabIndex = 99;
@@ -838,7 +841,7 @@
             this.EquipArtifactsCheckBox.Checked = global::InventoryKamera.Properties.Settings.Default.EquipArtifacts;
             this.EquipArtifactsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.EquipArtifactsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::InventoryKamera.Properties.Settings.Default, "EquipArtifacts", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.EquipArtifactsCheckBox.Location = new System.Drawing.Point(328, 88);
+            this.EquipArtifactsCheckBox.Location = new System.Drawing.Point(305, 93);
             this.EquipArtifactsCheckBox.Name = "EquipArtifactsCheckBox";
             this.EquipArtifactsCheckBox.Size = new System.Drawing.Size(94, 17);
             this.EquipArtifactsCheckBox.TabIndex = 98;
@@ -864,10 +867,33 @@
         "enshots will be cleared when a new scan is started.\r\n");
             this.LogScreenshotsCheckBox.UseVisualStyleBackColor = true;
             // 
+            // Minimu
+            // 
+            this.Minimu.AutoSize = true;
+            this.Minimu.Location = new System.Drawing.Point(285, 75);
+            this.Minimu.Name = "Minimu";
+            this.Minimu.Size = new System.Drawing.Size(167, 13);
+            this.Minimu.TabIndex = 107;
+            this.Minimu.Text = "Minimum Secondary Artifact Level";
+            // 
+            // minimumSecondaryArtifactLevelControl
+            // 
+            this.minimumSecondaryArtifactLevelControl.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::InventoryKamera.Properties.Settings.Default, "MinimumSecondaryArtifactLevel", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.minimumSecondaryArtifactLevelControl.Location = new System.Drawing.Point(452, 73);
+            this.minimumSecondaryArtifactLevelControl.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.minimumSecondaryArtifactLevelControl.Name = "minimumSecondaryArtifactLevelControl";
+            this.minimumSecondaryArtifactLevelControl.Size = new System.Drawing.Size(48, 20);
+            this.minimumSecondaryArtifactLevelControl.TabIndex = 108;
+            this.minimumSecondaryArtifactLevelControl.Value = global::InventoryKamera.Properties.Settings.Default.MinimumSecondaryArtifactLevel;
+            // 
             // wandererNameTextBox
             // 
             this.wandererNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::InventoryKamera.Properties.Settings.Default, "WandererName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.wandererNameTextBox.Location = new System.Drawing.Point(328, 145);
+            this.wandererNameTextBox.Location = new System.Drawing.Point(328, 150);
             this.wandererNameTextBox.Name = "wandererNameTextBox";
             this.wandererNameTextBox.Size = new System.Drawing.Size(169, 20);
             this.wandererNameTextBox.TabIndex = 105;
@@ -879,7 +905,7 @@
             // travelerNameTextBox
             // 
             this.travelerNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::InventoryKamera.Properties.Settings.Default, "TravelerName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.travelerNameTextBox.Location = new System.Drawing.Point(328, 111);
+            this.travelerNameTextBox.Location = new System.Drawing.Point(328, 116);
             this.travelerNameTextBox.Name = "travelerNameTextBox";
             this.travelerNameTextBox.Size = new System.Drawing.Size(169, 20);
             this.travelerNameTextBox.TabIndex = 101;
@@ -888,19 +914,20 @@
             this.travelerNameTextBox.MouseHover += new System.EventHandler(this.DisplayCustomNameTooltip);
             this.travelerNameTextBox.ParentChanged += new System.EventHandler(this.ValidateCustomName);
             // 
-            // numericUpDown1
+            // minimumPrimaryArtifactLevelControl
             // 
-            this.numericUpDown1.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::InventoryKamera.Properties.Settings.Default, "MinimumArtifactLevel", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numericUpDown1.Location = new System.Drawing.Point(413, 62);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.minimumPrimaryArtifactLevelControl.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::InventoryKamera.Properties.Settings.Default, "MinimumPrimaryArtifactLevel", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.minimumPrimaryArtifactLevelControl.Location = new System.Drawing.Point(452, 50);
+            this.minimumPrimaryArtifactLevelControl.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
-            this.numericUpDown1.TabIndex = 95;
-            this.numericUpDown1.Value = global::InventoryKamera.Properties.Settings.Default.MinimumArtifactLevel;
+            this.minimumPrimaryArtifactLevelControl.Name = "minimumPrimaryArtifactLevelControl";
+            this.minimumPrimaryArtifactLevelControl.Size = new System.Drawing.Size(48, 20);
+            this.minimumPrimaryArtifactLevelControl.TabIndex = 95;
+            this.minimumPrimaryArtifactLevelControl.Value = global::InventoryKamera.Properties.Settings.Default.MinimumPrimaryArtifactLevel;
+            this.minimumPrimaryArtifactLevelControl.ValueChanged += new System.EventHandler(this.minimumPrimaryArtifactLevelControl_ValueChanged);
             // 
             // MinimumWeaponLevelControl
             // 
@@ -924,7 +951,7 @@
             // ArtifactRarityControl
             // 
             this.ArtifactRarityControl.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::InventoryKamera.Properties.Settings.Default, "MinimumArtifactRarity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ArtifactRarityControl.Location = new System.Drawing.Point(413, 26);
+            this.ArtifactRarityControl.Location = new System.Drawing.Point(452, 27);
             this.ArtifactRarityControl.Maximum = new decimal(new int[] {
             5,
             0,
@@ -939,6 +966,7 @@
             this.ArtifactRarityControl.Size = new System.Drawing.Size(48, 20);
             this.ArtifactRarityControl.TabIndex = 90;
             this.ArtifactRarityControl.Value = global::InventoryKamera.Properties.Settings.Default.MinimumArtifactRarity;
+            this.ArtifactRarityControl.ValueChanged += new System.EventHandler(this.ArtifactRarityControl_ValueChanged);
             // 
             // WeaponRarityControl
             // 
@@ -1062,6 +1090,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(595, 519);
+            this.Controls.Add(this.minimumSecondaryArtifactLevelControl);
+            this.Controls.Add(this.Minimu);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.wandererNameTextBox);
             this.Controls.Add(this.label1);
@@ -1071,9 +1101,9 @@
             this.Controls.Add(this.EquipArtifactsCheckBox);
             this.Controls.Add(this.ManualExportButton);
             this.Controls.Add(this.LogScreenshotsCheckBox);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.minimumPrimaryArtifactLevelControl);
             this.Controls.Add(this.MinimumWeaponLevelControl);
-            this.Controls.Add(this.MinimumArtifactLevelLabel);
+            this.Controls.Add(this.MinimumPrimaryArtifactLevelLabel);
             this.Controls.Add(this.MinimumWeaponLevelLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ArtifactRarityControl);
@@ -1135,7 +1165,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.GearPictureBox)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimumSecondaryArtifactLevelControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimumPrimaryArtifactLevelControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinimumWeaponLevelControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArtifactRarityControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WeaponRarityControl)).EndInit();
@@ -1213,9 +1244,9 @@
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Label MinimumWeaponLevelLabel;
-        private System.Windows.Forms.Label MinimumArtifactLevelLabel;
+        private System.Windows.Forms.Label MinimumPrimaryArtifactLevelLabel;
         private System.Windows.Forms.NumericUpDown MinimumWeaponLevelControl;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown minimumPrimaryArtifactLevelControl;
         private System.Windows.Forms.CheckBox LogScreenshotsCheckBox;
         private System.Windows.Forms.Button ManualExportButton;
         private System.Windows.Forms.CheckBox EquipArtifactsCheckBox;
@@ -1231,6 +1262,8 @@
         private System.Windows.Forms.ToolStripMenuItem updateExecutablesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem characterSlot1KeyToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox slot1StripTextBox;
+        private System.Windows.Forms.Label Minimu;
+        private System.Windows.Forms.NumericUpDown minimumSecondaryArtifactLevelControl;
     }
 }
 
