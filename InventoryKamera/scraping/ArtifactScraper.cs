@@ -267,14 +267,13 @@ namespace InventoryKamera
 			string setName = null;
 			string equippedCharacter = null;
 			bool _lock = false;
-			int totalRolls = 0;
 			bool astralMark = false;
 			bool elixirCrafted = false;
 			List<SubStat> unactivatedSubStats = new List<SubStat>();
 
-
 			if (bm.Count >= 6)
 			{
+				rarity = 0;
 				int a_name = 0; int a_gearSlot = 1; int a_mainStat = 2; int a_level = 3; int a_subStats = 4; int a_equippedCharacter = 5; int a_lock = 6; 
 				// Get Rarity
 				rarity = GetRarity(bm[a_name]);
@@ -311,7 +310,7 @@ namespace InventoryKamera
 
 				await Task.WhenAll(tasks.ToArray());
 			}
-			return new Artifact(setName, rarity, level, gearSlot, mainStat, subStats, unactivatedSubStats, equippedCharacter, id, _lock, totalRolls, astralMark, elixirCrafted);
+			return new Artifact(setName, rarity, level, gearSlot, mainStat, subStats, unactivatedSubStats, equippedCharacter, id, _lock, astralMark, elixirCrafted);
 		}
 
 		private static int GetRarity(Bitmap bm)

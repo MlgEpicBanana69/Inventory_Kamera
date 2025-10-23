@@ -36,9 +36,6 @@ namespace InventoryKamera
         [JsonProperty("id")]
 		public int Id { get; private set; }
 
-		[JsonProperty("totalRolls")]
-		public int TotalRolls { get; private set; }
-
 		[JsonProperty("astralMark")]
 		public bool AstralMark { get; private set; }
 
@@ -59,13 +56,12 @@ namespace InventoryKamera
 			EquippedCharacter = null;
 			Lock = false;
 			Id = 0;
-			TotalRolls = 0;
 			AstralMark = false;
 			ElixirCrafted = false;
 			UnactivatedSubStats = new List<SubStat>(4); // Not sure why GOODv3 wants a list for this but I'm giving it a size 4 just in case
 		}
 
-		public Artifact(string _setName, int _rarity, int _level, string _gearSlot, string _mainStat, List<SubStat> _subStats, List<SubStat> _unactivatedSubStats, string _equippedCharacter = null, int _id = 0, bool _Lock = false, int _totalRolls = 0, bool _astralMark = false, bool _elixirCrafted = false)
+		public Artifact(string _setName, int _rarity, int _level, string _gearSlot, string _mainStat, List<SubStat> _subStats, List<SubStat> _unactivatedSubStats, string _equippedCharacter = null, int _id = 0, bool _Lock = false, bool _astralMark = false, bool _elixirCrafted = false)
 		{
 			GearSlot = string.IsNullOrWhiteSpace(_gearSlot) ? "" : _gearSlot;
 			Rarity = _rarity;
@@ -77,24 +73,18 @@ namespace InventoryKamera
 			Lock = _Lock;
 			Id = _id;
 			UnactivatedSubStats = _unactivatedSubStats.ToList().Where(e => e.value > 0).ToList();
-			TotalRolls = _totalRolls;
 			AstralMark = _astralMark;
 			ElixirCrafted = _elixirCrafted;
 		}
 
 		public bool IsValid()
 		{
-			return HasValidLevel() && HasValidRarity() && HasValidSlot() && HasValidSetName() && HasValidMainStat() && HasValidSubStats() && HasValidUnactivatedSubStats() && HasValidEquippedCharacter() && HasValidTotalRolls();
+			return HasValidLevel() && HasValidRarity() && HasValidSlot() && HasValidSetName() && HasValidMainStat() && HasValidSubStats() && HasValidUnactivatedSubStats() && HasValidEquippedCharacter();
 		}
 
 		public bool HasValidLevel()
 		{
 			return 0 <= Level && Level <= 20;
-		}
-
-		public bool HasValidTotalRolls()
-		{
-			return 1 <= TotalRolls && TotalRolls <= 9;
 		}
 
 		public bool HasValidRarity()
@@ -200,7 +190,6 @@ namespace InventoryKamera
 				&& SetName == artifact.SetName
 				&& EquippedCharacter == artifact.EquippedCharacter
 				&& Lock == artifact.Lock
-				&& TotalRolls == artifact.TotalRolls
 				&& AstralMark == artifact.AstralMark
 				&& ElixirCrafted == artifact.ElixirCrafted
 				&& UnactivatedSubStats == artifact.UnactivatedSubStats;
@@ -226,7 +215,7 @@ namespace InventoryKamera
 			return output;
 		}
 
-		public override int GetHashCode() => (GearSlot, Rarity, MainStat, Level, SubStats, SetName, EquippedCharacter, Lock, TotalRolls, AstralMark, ElixirCrafted, UnactivatedSubStats).GetHashCode();
+		public override int GetHashCode() => (GearSlot, Rarity, MainStat, Level, SubStats, SetName, EquippedCharacter, Lock, AstralMark, ElixirCrafted, UnactivatedSubStats).GetHashCode();
 
 		public static bool operator ==(Artifact lhs, Artifact rhs)
 		{
