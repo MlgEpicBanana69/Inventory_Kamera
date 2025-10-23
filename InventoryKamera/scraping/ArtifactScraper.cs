@@ -1,7 +1,6 @@
 ﻿using Accord.Imaging;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -212,7 +211,7 @@ namespace InventoryKamera
                 StopScanning = currLevel < Properties.Settings.Default.MinimumSecondaryArtifactLevel;
             }
 
-            if (StopScanning || belowRarity || currLevel < 0) // what??
+            if (StopScanning || belowRarity || currLevel < 0)
             {
 				artifactImages.ForEach(i => i.Dispose());
 				return;
