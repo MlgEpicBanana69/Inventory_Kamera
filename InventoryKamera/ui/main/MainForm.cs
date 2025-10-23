@@ -345,17 +345,17 @@ namespace InventoryKamera
 
         private void Github_Label_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/Andrewthe13th/Inventory_Kamera/");
+            Process.Start("https://github.com/MlgEpicBanana69/Inventory_Kamera/");
         }
 
         private void Releases_Label_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/Andrewthe13th/Inventory_Kamera/releases");
+            Process.Start("https://github.com/MlgEpicBanana69/Inventory_Kamera/releases");
         }
 
         private void IssuesPage_Label_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/Andrewthe13th/Inventory_Kamera/issues");
+            Process.Start("https://github.com/MlgEpicBanana69/Inventory_Kamera/issues");
         }
 
         private void FileSelectButton_Click(object sender, EventArgs e)
@@ -549,7 +549,7 @@ namespace InventoryKamera
             var client = new GitHubClient(new ProductHeaderValue("Inventory_Kamera"));
             try
             {
-                var releases = await client.Repository.Release.GetAll("Andrewthe13th", "Inventory_Kamera");
+                var releases = await client.Repository.Release.GetAll("MlgEpicBanana69", "Inventory_Kamera");
                 var latest = releases.First();
 
 
