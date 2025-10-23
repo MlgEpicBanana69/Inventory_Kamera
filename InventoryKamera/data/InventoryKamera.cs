@@ -434,8 +434,8 @@ namespace InventoryKamera
 				{
 					if (artifact.EquippedCharacter == character.NameGOOD)
 					{
-						character.AssignArtifact(artifact); // Do we even need to do this?
-						Logger.Debug("Assigned {fearSlot} to {character}", artifact.GearSlot, character.NameGOOD);
+						character.AssignArtifact(artifact);
+						Logger.Debug("Assigned {gearSlot} to {character}", artifact.GearSlot, character.NameGOOD);
 						break;
 					}
 				}
