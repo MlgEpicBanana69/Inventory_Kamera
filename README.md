@@ -5,7 +5,7 @@ Fan-made Genshin Impact tool that scans characters, weapons, artifacts, material
 This scanner exports in `.GOOD`, a JSON-based exporting format, which allows you to use it with compatible online Genshin Impact tools. These tools include artifact optimizing tools including [Genshin Optimizer](https://frzyc.github.io/genshin-optimizer/#/), [SEELIE.me](https://seelie.me/) and [Aspirine's Genshin Impact Calculator](https://genshin.aspirine.su/).
 
 ## Download
-[LATEST DOWNLOAD HERE](https://github.com/Andrewthe13th/Inventory_Kamera/releases/latest) <- CLICK ME NOT THE "CODE" BUTTON NEAR THE TOP OF THIS PAGE
+[LATEST DOWNLOAD HERE](https://github.com/MlgEpicBanana69/Inventory_Kamera/releases/latest) <- CLICK ME NOT THE "CODE" BUTTON NEAR THE TOP OF THIS PAGE
 
 ## DISCORD
 https://discord.gg/zh56aVWe3U
@@ -37,7 +37,7 @@ Before installing Inventory Kamera, please have **the following things installed
 - [GenshinImpact.exe](https://genshin.hoyoverse.com/) or [YuanShen.exe](https://ys.mihoyo.com/) launcher
 - [Microsoft Visual C++ Redistributable for Visual Studio 2015-2022 (x86 or x64)](https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2015-2017-2019-and-2022), _**A computer restart may be required after installing this package for the first time**_
 
-[Download the latest version of Inventory Kamera here](https://github.com/Andrewthe13th/Inventory_Kamera/releases/latest) and unzip its files into a folder of your choosing, then launch the extracted .exe file. It will likely prompt you for Security and/or User Access. This access is required to interact with the game.
+[Download the latest version of Inventory Kamera here](https://github.com/MlgEpicBanana69/Inventory_Kamera/releases/latest) and unzip its files into a folder of your choosing, then launch the extracted .exe file. It will likely prompt you for Security and/or User Access. This access is required to interact with the game.
 
 To upgrade from a previous version, download a newer release and unzip its files into the current Inventory Kamera location (allow it to replace old files when prompted) or a new folder of your choosing.
 
@@ -52,7 +52,7 @@ To upgrade from a previous version, download a newer release and unzip its files
      - Don't know if a resolution is 16:9 or 16:10? [Find out here](https://andrew.hedges.name/experiments/aspect_ratio/).
         > **Warning**
         >
-        > If you have an ultrawide screen, please see [this thread](https://github.com/Andrewthe13th/Inventory_Kamera/issues/40)
+        > If you have an ultrawide screen, please see [this thread](https://github.com/andrewthe13th/Inventory_Kamera/issues/40)
         > Additionally, HDR is not currently supported. If you experience scanning issues, please make sure this is disabled in Windows Settings
    - Under `Controls`, set _Control Type_ to Keyboard.
      - If you rebound keys (inventory (default: B), character screen (default: C), or selecting character 1 (default: 1)) revert your binding to default or set up the new key binding in Inventory Kamera.
@@ -205,15 +205,7 @@ Consider using [a JSON text validator](https://jsonlint.com/) after following th
 
 ## Reporting an issue
 
-If you run into a problem with our scanner (e.g. a bug, app crash, invalid export format), please [create an issue here](https://github.com/Andrewthe13th/Inventory_Kamera/issues/new/choose) and try to fill it out as much as possible. It, along with the evidence, will greatly speed up the bug-fixing process. 
-
-Alternatively, the [Inventory Kamera Discord](https://discord.gg/zh56aVWe3U) is open for more real-time discussion and support help.
-
-> **Note**
->
-> Before submitting an issue, **please [check for similar issues](https://github.com/Andrewthe13th/Inventory_Kamera/issues?q=is%3Aissue), especially the ones that are still open.**
->
-> Start by leaving a reaction emoji to that issue (more reactions means more dev attention!). Please try to limit comments to new or helpful information (i.e. not "Same issue here" comments). You can choose to _subscribe_ to that issue by clicking 'Subscribe' in the Notifications section to get notifications on thread developments.
+DM on discord if you wnat
 
 ### Creating a new issue
 
@@ -221,15 +213,7 @@ We would **love to have Screenshots (especially video recordings!) and Error Log
 
 ## Requesting a new feature
 
-If you would like to request a new feature, please visit the [discussion forum](https://github.com/Andrewthe13th/Inventory_Kamera/discussions) before opening a new feature request using [Inventory Kamera feature request form](https://github.com/Andrewthe13th/Inventory_Kamera/discussions/new?category=ideas-or-feature-requests).
-
-Alternatively, the [Inventory Kamera Discord](https://discord.gg/zh56aVWe3U) is has a feature request channel.
-
-## Asking a question
-
-General questions? Start by looking for similar questions in the [Inventory Kamera discussion forum](https://github.com/Andrewthe13th/Inventory_Kamera/discussions) OR the [Inventory Kamera Discord](https://discord.gg/zh56aVWe3U).
-
-If you have a question that doesn't have a thread, create a new [general](https://github.com/Andrewthe13th/Inventory_Kamera/discussions/new?category=general) or [Q&A](https://github.com/Andrewthe13th/Inventory_Kamera/discussions/new?category=q-a) thread.
+If you would like to request a new feature, please visit the [discussion forum](https://github.com/MlgEpicBanana69/Inventory_Kamera/discussions) before opening a new feature request using [Inventory Kamera feature request form](https://github.com/MlgEpicBanana69/Inventory_Kamera/discussions/new?category=ideas-or-feature-requests).
 
 ## Frequently Asked Questions (FAQ)
 
@@ -245,10 +229,6 @@ However, that does not mean it will stay that way forever! We are at the mercy o
 #### What Languages does Inventory Kamera support?
 
 Inventory Kamera only supports _**English**_ currently. This limitation is due to only having a trained dataset available for the English language. The in-game "Game Langugae" option must be set to Engish. Scanning efficiency is not guaranteed for other languages. More languages may be implemented in the future but there are no current plans.
-
-#### I need help! Where can I go?
-
-Help may be found in the [Inventory Kamera discussion forum](https://github.com/Andrewthe13th/Inventory_Kamera/discussions) or in the [Inventory Kamera Discord](https://discord.gg/zh56aVWe3U).
 
 ## License
 
